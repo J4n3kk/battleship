@@ -36,12 +36,10 @@ const GameboardFactory = function () {
     const locations = []
     for (const x of shiftX) {
       for (const y of shiftY) {
-        //
         locations.push(board?.[coordX + x]?.[coordY + y])
       }
     }
     const isLocationAvailable = locations.map(x => !!((x === undefined || x.length === 0)))
-
     return !(isLocationAvailable.filter(x => x === false).length > 0)
   }
   const gameboardController = {
@@ -77,25 +75,19 @@ const GameboardFactory = function () {
         const diff = prev - next
         if (diff > 1) return 'incorrect' //
       })
-      if (checkerX == 'incorrect' || checkerY == 'incorrect') return false
+      if (checkerX === 'incorrect' || checkerY === 'incorrect') return false
       // check if coords are not duplicated
       // TO BE IMPLEMENTED
-
       // board validation
       // check if corresponding spots to input coords are empty
       const shipLocation = coords.map(coord => board[coord[0]][coord[1]])
-
       const isAvailable = shipLocation.filter(location => location.length > 0).length === 0
       if (isAvailable === false) return false
       // check if other ships does not already exist in adjecent spots to coords
-
       const isLocationFree = !coords.map(coord => isAdjecentFree(coord)).includes(false)
-
       if (isLocationFree === false) return false //
-
       // check if maximum amount of ship type is reached
       if (info[`numOfShipsLength${shipLength}`] === rules[`numOfShipsLength${shipLength}`]) return false //
-
       // when input and board validated
       // create Ship object with proper length
       const ship = ShipFactory(shipLength)
@@ -109,16 +101,11 @@ const GameboardFactory = function () {
       // return true/truthy value
       return true //
     },
-    showBoard: function () {
-
-    },
     status: function () {
       return info
     }
   }
   return gameboardController
 }
-
 const gameboard = GameboardFactory()
-
 module.exports = { default: GameboardFactory }

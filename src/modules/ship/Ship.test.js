@@ -6,12 +6,10 @@ it('creates new instance of Ship', () => {
     timesHit: 0
   })
 })
-
 it('isSunk does not work', () => {
   expect(ship(0).isSunk()).toBe(true)
   expect(ship(1).isSunk()).toBe(false)
 })
-
 it('adding hit does not work', () => {
   const shipObject = ship(2)
   shipObject.hit()
