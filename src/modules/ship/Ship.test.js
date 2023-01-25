@@ -1,8 +1,8 @@
-const ship = require("./Ship").default
+const ship = require('./Ship').default
 
-it('creates new instance of Ship',() => {
+it('creates new instance of Ship', () => {
   expect(ship(3)).toStrictEqual({
-    lenght: 3,
+    length: 3,
     timesHit: 0
   })
 })
@@ -13,7 +13,7 @@ it('isSunk does not work', () => {
 })
 
 it('adding hit does not work', () => {
-  let shipObject = ship(2);
+  const shipObject = ship(2)
   shipObject.hit()
   expect(shipObject.timesHit).toBe(1)
   shipObject.hit()
